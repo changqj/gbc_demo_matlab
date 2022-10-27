@@ -26,8 +26,10 @@ fprintf(fid,'%d\n',0);
 fclose(fid);
 if ispc
     [status,~] = dos(['triangle -pqa' s{1} 'Dg ' filename '.poly']);
+elseif ismac
+    [status,~] = system(['triangle_mos -pqa' s{1} 'Dg ' filename '.poly']);
 elseif isunix
-    [status,~] = system(['/home/chang/github/triangle/triangle -pqa' s{1} 'Dg ' filename '.poly']);
+    [status,~] = system(['triangle_unix -pqa' s{1} 'Dg ' filename '.poly']);
 else
     disp("Error");
 end
